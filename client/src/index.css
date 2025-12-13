@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-100;
+    font-family: 'Arial', sans-serif;
+  }
+}
+
+@layer components {
+  .pokedex-card {
+    @apply bg-white rounded-2xl shadow-2xl border-8 border-red-600 relative overflow-hidden;
+  }
+
+  .pokedex-lights {
+    @apply flex items-center gap-2;
+  }
+
+  .light {
+    @apply w-4 h-4 rounded-full shadow-lg;
+  }
+
+  .pokemon-btn {
+    @apply px-6 py-3 rounded-lg font-bold text-white text-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg;
+  }
+
+  .pokemon-btn-red {
+    @apply pokemon-btn bg-red-600 hover:bg-red-700;
+  }
+
+  .pokemon-btn-blue {
+    @apply pokemon-btn bg-blue-600 hover:bg-blue-700;
+  }
+
+  .pokemon-btn-yellow {
+    @apply pokemon-btn bg-yellow-500 hover:bg-yellow-600 text-gray-900;
+  }
+
+  .pokemon-input {
+    @apply w-full px-4 py-3 rounded-lg border-4 border-gray-300 focus:border-blue-500 focus:outline-none text-lg transition-all;
+  }
+
+  .priority-badge {
+    @apply px-3 py-1 rounded-full text-sm font-bold uppercase;
+  }
+
+  .priority-normal {
+    @apply priority-badge bg-yellow-400 text-gray-900;
+  }
+
+  .priority-gym {
+    @apply priority-badge bg-blue-500 text-white;
+  }
+
+  .priority-elite {
+    @apply priority-badge bg-red-600 text-white;
+  }
+}
