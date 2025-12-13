@@ -62,74 +62,94 @@ function EditTask() {
     navigate("/dashboard");
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${bgImage})`,
+        backgroundImage: `url(${bgImage})`,
       }}
     >
-      <Navbar />
+      {/* dark overlay */}
+      <div className="min-h-screen bg-black/60">
+        <Navbar />
 
-      <div className="max-w-3xl mx-auto px-4 py-8">
-        <div className="pokedex-card p-8">
-          <h2 className="text-4xl font-black text-blue-500 mb-6">
-            Edit Mission
-          </h2>
+        <div className="max-w-3xl mx-auto px-4 py-10">
+          <div className="pokedex-card border-4 border-black bg-gray-200/95 p-8 rounded-2xl shadow-2xl">
+            {/* Pokédex lights */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 bg-blue-500 rounded-full border-4 border-blue-900 animate-pulse" />
+              <div className="w-4 h-4 bg-red-500 rounded-full" />
+              <div className="w-4 h-4 bg-yellow-400 rounded-full" />
+              <div className="w-4 h-4 bg-green-400 rounded-full" />
+            </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              className="pokemon-input"
-              required
-            />
+            <h2 className="text-4xl font-black text-blue-700 mb-2">
+              Edit Trainer Mission
+            </h2>
+            <p className="text-gray-700 font-semibold mb-8">
+              Update your Pokédex mission details
+            </p>
 
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              className="pokemon-input"
-              required
-            />
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                placeholder="Mission Title"
+                className="pokemon-input"
+                required
+              />
 
-            <input
-              type="date"
-              name="deadline"
-              value={formData.deadline}
-              onChange={handleChange}
-              className="pokemon-input"
-              required
-            />
+              <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                placeholder="Mission Description"
+                className="pokemon-input min-h-[120px] resize-none"
+                required
+              />
 
-            <select
-              name="priority"
-              value={formData.priority}
-              onChange={handleChange}
-              className="pokemon-input"
-            >
-              <option value="NORMAL">Normal</option>
-              <option value="GYM">Gym Mission</option>
-              <option value="ELITE">Elite Mission</option>
-            </select>
+              <input
+                type="date"
+                name="deadline"
+                value={formData.deadline}
+                onChange={handleChange}
+                className="pokemon-input"
+                required
+              />
 
-            <button type="submit" className="pokemon-btn-blue w-full">
-              Update Mission
-            </button>
+              <select
+                name="priority"
+                value={formData.priority}
+                onChange={handleChange}
+                className="pokemon-input cursor-pointer"
+              >
+                <option value="NORMAL">Normal Mission</option>
+                <option value="GYM">Gym Mission</option>
+                <option value="ELITE">Elite Mission</option>
+              </select>
 
-            <button
-              type="button"
-              onClick={handleDelete}
-              className="pokemon-btn bg-red-700 hover:bg-red-800 w-full"
-            >
-              Delete Mission
-            </button>
-          </form>
+              <div className="flex flex-col gap-4 pt-4">
+                <button
+                  type="submit"
+                  className="pokemon-btn-blue w-full text-lg"
+                >
+                  Update Mission
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleDelete}
+                  className="pokemon-btn bg-red-700 hover:bg-red-800 w-full text-lg"
+                >
+                  Delete Mission
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
